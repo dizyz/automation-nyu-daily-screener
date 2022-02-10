@@ -1,0 +1,30 @@
+on:
+  webhook:
+    method: post
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      - name: Run script
+        run: |
+          yarn start
+        env:
+          NET_ID: ${{ secrets.NET_ID }}
+          NET_ID_PASSWORD: ${{ secrets.NET_ID_PASSWORD }}
+          TELEGRAM_SEND_API_ENDPOINT: ${{ secrets.TELEGRAM_SEND_API_ENDPOINT }}
