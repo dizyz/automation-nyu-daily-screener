@@ -16,7 +16,7 @@ export async function sendMessage(options: SendMessageOptions) {
 
   let {message} = options;
   let from = options.from || 'SmartLink';
-  let date = options.date || new Date().toISOString();
+  let date = options.date || new Date().toLocaleString();
 
   await Axios.post(TELEGRAM_SEND_API_ENDPOINT, {
     message: {
