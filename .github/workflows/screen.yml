@@ -1,6 +1,5 @@
-on:
-  webhook:
-    method: post
+name: Daily Screen
+on: workflow_dispatch
 jobs:
   run:
     runs-on: ubuntu-latest
