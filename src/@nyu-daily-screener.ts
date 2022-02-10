@@ -86,9 +86,12 @@ export async function runDailyScreener(): Promise<void> {
     }
     await loginButton.click();
 
-    await page.waitForFunction(`
+    await page.waitForFunction(
+      `
       document.body && document.body.textContent.includes('Screener Status:')
-    `);
+    `,
+      {timeout: 30000},
+    );
     await page.waitForTimeout(1000);
     await page.screenshot({path: 'screenshot.png'});
   } finally {
