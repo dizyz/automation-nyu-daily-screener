@@ -1,5 +1,6 @@
 import Puppeteer from 'puppeteer';
 import {
+  HEADLESS,
   NET_ID,
   NET_ID_PASSWORD,
   DUO_AUTH_MANUAL,
@@ -10,7 +11,7 @@ import Axios from 'axios';
 const DAILY_SCREENER_URL = 'https://www.nyu.edu/nyureturns/dailyscreener';
 
 export async function runDailyScreener(): Promise<void> {
-  let browser = await Puppeteer.launch({headless: false});
+  let browser = await Puppeteer.launch({headless: HEADLESS});
 
   try {
     let page = await browser.newPage();
