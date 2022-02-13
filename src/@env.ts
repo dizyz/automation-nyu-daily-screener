@@ -1,7 +1,9 @@
 export const NET_ID = process.env.NET_ID!;
 export const NET_ID_PASSWORD = process.env.NET_ID_PASSWORD!;
 
-export const HEADLESS = process.env.HEADLESS === 'true';
+export const HEADLESS = !(
+  !process.env.HEADLESS || process.env.HEADLESS.toLowerCase() === 'false'
+);
 
 export const DUO_AUTH_MANUAL =
   process.env.DUO_AUTH_MANUAL &&
