@@ -1,5 +1,11 @@
 name: Daily Screen
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      auth_manual:
+        type: boolean
+        default: false
+
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -27,3 +33,5 @@ jobs:
           NET_ID: ${{ secrets.NET_ID }}
           NET_ID_PASSWORD: ${{ secrets.NET_ID_PASSWORD }}
           TELEGRAM_SEND_API_ENDPOINT: ${{ secrets.TELEGRAM_SEND_API_ENDPOINT }}
+          DUO_SMS_PASSCODE_END_POINT: ${{ secrets.DUO_SMS_PASSCODE_END_POINT }}
+          DUO_AUTH_MANUAL: ${{ github.event.inputs.auth_manual }}

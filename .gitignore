@@ -5,3 +5,5 @@ dist/
 .backup/
 *.local
 *.log
+screenshot.png
+screenshot-*.png
